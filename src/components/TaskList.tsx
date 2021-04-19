@@ -4,12 +4,6 @@ import '../styles/tasklist.scss'
 
 import { FiTrash, FiCheckSquare } from 'react-icons/fi'
 
-interface Task {
-  id: number;
-  title: string;
-  isComplete: boolean;
-}
-
 export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
