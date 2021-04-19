@@ -14,8 +14,12 @@ export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
-  function handleCreateNewTask() {
+  function saveTasks(localTasks: Task[]) {
+    localStorage.setItem('tasks', JSON.stringify(localTasks));
+    setTasks(localTasks);
+  }
 
+  function handleCreateNewTask() {
     if (!newTaskTitle) return false;
 
     const task = {
@@ -23,25 +27,22 @@ export function TaskList() {
       title: newTaskTitle,
       isComplete: false,
     }
-    setTasks(tasks => [...tasks, task]);
+
+    saveTasks([...tasks, task]);
     setNewTaskTitle('');
-    localStorage.setItem('tasks', JSON.stringify([...tasks, task]));
   }
 
   function handleToggleTaskCompletion(id: number) {
     const newTasks = [...tasks];
     const task = newTasks.find(task => task.id === id);
-    if (task) {
-      task.isComplete = !task.isComplete;
-      setTasks([...newTasks]);
-    }
-    return;
+    if (!task) return false;
+    task.isComplete = !task.isComplete;
+    saveTasks([...newTasks]);
   }
 
   function handleRemoveTask(id: number) {
     const tasksFiltered = tasks.filter(task => task.id !== id);
-    setTasks(tasksFiltered);
-    localStorage.setItem('tasks', JSON.stringify(tasksFiltered));
+    saveTasks(tasksFiltered);
   }
 
   async function recoveryTasks() {
