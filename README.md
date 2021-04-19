@@ -8,7 +8,7 @@
 
 simple task app made in react.
 
-Check the live version here: https://github-explorer-khaki-theta.vercel.app/
+Check the live version here: https://to-do-coral.vercel.app
 
 ## Getting Started
 
