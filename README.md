@@ -8,7 +8,7 @@
 
 simple task app made in react.
 
-Check the live version here: https://to-do-coral.vercel.app
+Check the live version here: https://to-do-pearl.vercel.app
 
 ## Getting Started
 
