@@ -37,7 +37,7 @@ export function TaskList() {
     const task = newTasks.find(task => task.id === id);
     if (!task) return false;
     task.isComplete = !task.isComplete;
-    saveTasks([...newTasks]);
+    saveTasks(newTasks);
   }
 
   function handleRemoveTask(id: number) {
